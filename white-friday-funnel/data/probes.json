@@ -1,0 +1,230 @@
+{
+  "version": "1.0",
+  "sectors": {
+    "restaurants": [
+      {
+        "id": "has_site",
+        "type": "boolean",
+        "label": "هل لديك موقع إلكتروني؟",
+        "required": true
+      },
+      {
+        "id": "site_url",
+        "type": "url",
+        "label": "رابط موقعك",
+        "placeholder": "https://example.com",
+        "required": true,
+        "dependsOn": {
+          "has_site": true
+        }
+      },
+      {
+        "id": "has_menu",
+        "type": "boolean",
+        "label": "هل لديك منيو إلكتروني؟",
+        "required": false
+      },
+      {
+        "id": "has_delivery",
+        "type": "boolean",
+        "label": "هل تقدّم توصيل؟",
+        "required": false
+      },
+      {
+        "id": "avg_orders",
+        "type": "select",
+        "label": "متوسط الطلبات اليومية؟",
+        "options": [
+          "أقل من 20 طلب",
+          "20-80 طلب",
+          "أكثر من 80 طلب"
+        ],
+        "required": false
+      }
+    ],
+    "clinics": [
+      {
+        "id": "has_site",
+        "type": "boolean",
+        "label": "هل لديك موقع إلكتروني؟",
+        "required": true
+      },
+      {
+        "id": "site_url",
+        "type": "url",
+        "label": "رابط موقعك",
+        "placeholder": "https://example.com",
+        "required": true,
+        "dependsOn": {
+          "has_site": true
+        }
+      },
+      {
+        "id": "has_booking",
+        "type": "boolean",
+        "label": "هل لديك نظام حجز مواعيد؟",
+        "required": false
+      },
+      {
+        "id": "specialty",
+        "type": "select",
+        "label": "التخصص الرئيسي",
+        "options": [
+          "أسنان",
+          "جلدية",
+          "أسرة وطب عام",
+          "عيون",
+          "عظام",
+          "نساء وولادة",
+          "أطفال",
+          "تخصصات متعددة"
+        ],
+        "otherAllowed": true,
+        "required": false
+      }
+    ],
+    "recruitment": [
+      {
+        "id": "has_site",
+        "type": "boolean",
+        "label": "هل لديك موقع إلكتروني؟",
+        "required": true
+      },
+      {
+        "id": "site_url",
+        "type": "url",
+        "label": "رابط موقعك",
+        "placeholder": "https://example.com",
+        "required": true,
+        "dependsOn": {
+          "has_site": true
+        }
+      },
+      {
+        "id": "runs_ads",
+        "type": "boolean",
+        "label": "هل تعلن على جوجل حالياً؟",
+        "required": false
+      },
+      {
+        "id": "cv_flow",
+        "type": "boolean",
+        "label": "تحتاج أرشفة سِيَر وتتبّع طلبات؟",
+        "required": false
+      }
+    ],
+    "realestate": [
+      {
+        "id": "has_site",
+        "type": "boolean",
+        "label": "هل لديك موقع إلكتروني؟",
+        "required": true
+      },
+      {
+        "id": "site_url",
+        "type": "url",
+        "label": "رابط موقعك",
+        "placeholder": "https://example.com",
+        "required": true,
+        "dependsOn": {
+          "has_site": true
+        }
+      },
+      {
+        "id": "property_type",
+        "type": "select",
+        "label": "نوع العقارات الرئيسي",
+        "options": [
+          "سكني",
+          "تجاري",
+          "أراضي",
+          "استثماري",
+          "متنوع"
+        ],
+        "required": false
+      }
+    ],
+    "contracting": [
+      {
+        "id": "has_site",
+        "type": "boolean",
+        "label": "هل لديك موقع إلكتروني؟",
+        "required": true
+      },
+      {
+        "id": "site_url",
+        "type": "url",
+        "label": "رابط موقعك",
+        "placeholder": "https://example.com",
+        "required": true,
+        "dependsOn": {
+          "has_site": true
+        }
+      },
+      {
+        "id": "project_type",
+        "type": "select",
+        "label": "نوع المشاريع الرئيسي",
+        "options": [
+          "سكني",
+          "تجاري",
+          "صناعي",
+          "بنية تحتية",
+          "متنوع"
+        ],
+        "required": false
+      }
+    ],
+    "ecommerce": [
+      {
+        "id": "store_url",
+        "type": "url",
+        "label": "رابط متجرك الإلكتروني",
+        "placeholder": "https://store.example.com",
+        "required": true,
+        "hint": "إذا لم يكن لديك متجر بعد، اكتب الرابط المخطط له أو اتركه فارغاً"
+      },
+      {
+        "id": "product_count",
+        "type": "select",
+        "label": "عدد المنتجات الحالي/المتوقع",
+        "options": [
+          "أقل من 10 منتجات",
+          "10-50 منتج",
+          "أكثر من 50 منتج"
+        ],
+        "required": false
+      },
+      {
+        "id": "has_payment",
+        "type": "boolean",
+        "label": "هل لديك بوابة دفع مفعّلة؟",
+        "required": false
+      }
+    ],
+    "other": [
+      {
+        "id": "has_site",
+        "type": "boolean",
+        "label": "هل لديك موقع إلكتروني؟",
+        "required": true
+      },
+      {
+        "id": "site_url",
+        "type": "url",
+        "label": "رابط موقعك",
+        "placeholder": "https://example.com",
+        "required": false,
+        "dependsOn": {
+          "has_site": true
+        }
+      },
+      {
+        "id": "social_active",
+        "type": "boolean",
+        "label": "هل تدير حسابات سوشيال ميديا بانتظام؟",
+        "required": false
+      }
+    ]
+  }
+}

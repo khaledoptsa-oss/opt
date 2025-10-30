@@ -1,0 +1,770 @@
+/* ===================================
+   Wizard-Specific Styles
+   =================================== */
+
+/* ===================================
+   Stage Progress
+   =================================== */
+.stage-progress-wrapper {
+  position: sticky;
+  top: 70px;
+  background: rgba(11, 16, 35, 0.95);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid var(--stroke);
+  padding: var(--space-md) 0;
+  z-index: var(--z-sticky);
+  margin-bottom: var(--space-xl);
+}
+
+.stage-counter {
+  font-size: var(--font-size-lg);
+  font-weight: 800;
+  text-align: center;
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: var(--space-sm);
+}
+
+.stage-progress-label {
+  text-align: center;
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  margin-bottom: var(--space-sm);
+}
+
+.stage-progress-bar {
+  width: 100%;
+  max-width: 600px;
+  margin: 0 auto;
+  height: 6px;
+  background: var(--card);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+.stage-progress-fill {
+  height: 100%;
+  background: var(--gradient-primary);
+  border-radius: var(--radius-full);
+  transition: width var(--transition-slow);
+}
+
+/* ===================================
+   Wizard Stage Container
+   =================================== */
+.wizard-stage {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: var(--space-xl);
+  animation: fadeIn var(--transition-base) ease-out;
+}
+
+.stage-title {
+  font-size: var(--font-size-3xl);
+  text-align: center;
+  margin-bottom: var(--space-sm);
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.stage-subtitle {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: var(--font-size-lg);
+  margin-bottom: var(--space-2xl);
+}
+
+.stage-nav {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-md);
+  margin-top: var(--space-2xl);
+  flex-wrap: wrap;
+}
+
+/* Stage transitions */
+.stage-exit {
+  animation: slideOutLeft 250ms cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.stage-enter {
+  animation: slideInRight 300ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes slideOutLeft {
+  to {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ===================================
+   Stage 1: Sector List
+   =================================== */
+.sector-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-bottom: var(--space-xl);
+}
+
+.sector-option {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  padding: var(--space-lg);
+  background: var(--gradient-card);
+  border: 2px solid var(--stroke);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  position: relative;
+}
+
+.sector-option:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md), var(--shadow-neon);
+}
+
+.sector-option.selected {
+  border-color: var(--primary);
+  background: linear-gradient(145deg, rgba(108, 99, 255, 0.1) 0%, rgba(108, 99, 255, 0.05) 100%);
+  box-shadow: var(--shadow-neon);
+}
+
+.sector-icon {
+  font-size: 3rem;
+  flex-shrink: 0;
+}
+
+.sector-info {
+  flex-grow: 1;
+}
+
+.sector-info h3 {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  margin-bottom: var(--space-xs);
+}
+
+.sector-info p {
+  font-size: var(--font-size-sm);
+  color: var(--text-secondary);
+  margin: 0;
+}
+
+.sector-check {
+  font-size: 1.5rem;
+  color: var(--primary);
+  opacity: 0;
+  transition: opacity var(--transition-base);
+}
+
+.sector-option.selected .sector-check {
+  opacity: 1;
+}
+
+/* ===================================
+   Custom Input
+   =================================== */
+.custom-input-wrapper {
+  max-width: 600px;
+  margin: var(--space-xl) auto;
+  padding: var(--space-lg);
+  background: var(--gradient-card);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius-lg);
+}
+
+.custom-input-wrapper label {
+  display: block;
+  font-weight: 600;
+  margin-bottom: var(--space-sm);
+  color: var(--text-primary);
+}
+
+.custom-input {
+  width: 100%;
+  padding: var(--space-md);
+  background: var(--card);
+  border: 2px solid var(--stroke);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-size: var(--font-size-base);
+  font-family: 'Tajawal', sans-serif;
+  transition: all var(--transition-base);
+}
+
+.custom-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.1);
+}
+
+.custom-input::placeholder {
+  color: var(--text-muted);
+}
+
+/* ===================================
+   Stage 2: City Selection
+   =================================== */
+.city-search-wrapper {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto var(--space-xl);
+}
+
+.city-search {
+  width: 100%;
+  padding: var(--space-md) var(--space-lg);
+  padding-left: 50px;
+  background: var(--card);
+  border: 2px solid var(--stroke);
+  border-radius: var(--radius-lg);
+  color: var(--text-primary);
+  font-size: var(--font-size-lg);
+  font-family: 'Tajawal', sans-serif;
+  transition: all var(--transition-base);
+}
+
+.city-search:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: var(--shadow-neon);
+}
+
+.search-icon {
+  position: absolute;
+  left: var(--space-md);
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 1.5rem;
+  pointer-events: none;
+}
+
+.city-list {
+  max-height: 500px;
+  overflow-y: auto;
+  padding-left: var(--space-xs);
+}
+
+.city-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.city-list::-webkit-scrollbar-track {
+  background: var(--card);
+  border-radius: var(--radius-sm);
+}
+
+.city-list::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: var(--radius-sm);
+}
+
+.city-region {
+  margin-bottom: var(--space-lg);
+}
+
+.city-region-name {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  color: var(--primary);
+  margin-bottom: var(--space-md);
+  padding: var(--space-sm) var(--space-md);
+  background: rgba(108, 99, 255, 0.1);
+  border-radius: var(--radius-md);
+}
+
+.city-region-cities {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: var(--space-sm);
+}
+
+.city-option {
+  padding: var(--space-md);
+  background: var(--card);
+  border: 2px solid var(--stroke);
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: all var(--transition-base);
+  font-size: var(--font-size-base);
+  text-align: center;
+  position: relative;
+}
+
+.city-option:hover {
+  border-color: var(--primary);
+  background: rgba(108, 99, 255, 0.05);
+}
+
+.city-option.selected {
+  border-color: var(--primary);
+  background: rgba(108, 99, 255, 0.1);
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.city-check {
+  display: none;
+  margin-right: var(--space-xs);
+}
+
+.city-option.selected .city-check {
+  display: inline;
+}
+
+/* ===================================
+   Stage 3: Probe Questions
+   =================================== */
+.probe-questions {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  max-width: 700px;
+  margin: 0 auto var(--space-xl);
+}
+
+.probe-question {
+  padding: var(--space-lg);
+  background: var(--gradient-card);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius-lg);
+}
+
+.probe-label {
+  display: block;
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  margin-bottom: var(--space-md);
+  color: var(--text-primary);
+}
+
+.probe-boolean {
+  display: flex;
+  gap: var(--space-md);
+}
+
+.probe-bool-btn {
+  flex: 1;
+  padding: var(--space-md) var(--space-lg);
+  background: var(--card);
+  border: 2px solid var(--stroke);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  font-family: 'Tajawal', sans-serif;
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.probe-bool-btn:hover {
+  border-color: var(--primary);
+  background: rgba(108, 99, 255, 0.05);
+}
+
+.probe-bool-btn.selected {
+  border-color: var(--primary);
+  background: var(--gradient-primary);
+  color: white;
+  box-shadow: var(--shadow-neon);
+}
+
+.probe-input {
+  width: 100%;
+  padding: var(--space-md);
+  background: var(--card);
+  border: 2px solid var(--stroke);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-size: var(--font-size-base);
+  font-family: 'Tajawal', sans-serif;
+  transition: all var(--transition-base);
+}
+
+.probe-input:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px rgba(108, 99, 255, 0.1);
+}
+
+.probe-input.error {
+  border-color: #EF4444;
+}
+
+.probe-hint {
+  font-size: var(--font-size-xs);
+  color: var(--text-muted);
+  margin-top: var(--space-xs);
+}
+
+.probe-error {
+  color: #EF4444;
+  font-size: var(--font-size-sm);
+  margin-top: var(--space-xs);
+  min-height: 1.5rem;
+}
+
+.probe-select {
+  width: 100%;
+  padding: var(--space-md);
+  background: var(--card);
+  border: 2px solid var(--stroke);
+  border-radius: var(--radius-md);
+  color: var(--text-primary);
+  font-size: var(--font-size-base);
+  font-family: 'Tajawal', sans-serif;
+  cursor: pointer;
+  transition: all var(--transition-base);
+}
+
+.probe-select:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.probe-select option {
+  background: var(--card);
+  color: var(--text-primary);
+}
+
+/* ===================================
+   Stage 4: Offers (Wizard Version)
+   =================================== */
+.bundles-grid-wizard {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--space-lg);
+  margin: var(--space-xl) 0;
+}
+
+.bundle-card-wizard {
+  position: relative;
+  padding: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  transition: all var(--transition-base);
+}
+
+.bundle-card-wizard.selected {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-neon);
+}
+
+.bundle-card-wizard.locked {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.lock-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(15, 21, 48, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-lg);
+  z-index: 10;
+}
+
+.lock-icon {
+  font-size: 3rem;
+}
+
+.bundle-title {
+  font-size: var(--font-size-lg);
+  font-weight: 700;
+  margin-bottom: var(--space-sm);
+}
+
+.bundle-why-btn {
+  background: transparent;
+  border: none;
+  color: var(--accent);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  padding: var(--space-xs) 0;
+  margin: var(--space-sm) 0;
+  text-align: right;
+  transition: all var(--transition-base);
+  font-family: 'Tajawal', sans-serif;
+}
+
+.bundle-why-btn:hover {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+.savings-bar-wizard {
+  background: var(--gradient-card);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  margin-bottom: var(--space-lg);
+}
+
+.billing-selector-wizard {
+  max-width: 600px;
+  margin: 0 auto var(--space-lg);
+}
+
+.pricing-summary-wizard {
+  max-width: 600px;
+  margin: var(--space-xl) auto;
+}
+
+/* ===================================
+   Stage 5: Recap
+   =================================== */
+.recap-card {
+  margin-bottom: var(--space-lg);
+  padding: var(--space-xl);
+}
+
+.recap-section-title {
+  font-size: var(--font-size-xl);
+  font-weight: 700;
+  margin-bottom: var(--space-md);
+  color: var(--primary);
+}
+
+.recap-info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.recap-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: var(--space-sm);
+  border-bottom: 1px solid var(--stroke);
+}
+
+.recap-item:last-child {
+  border-bottom: none;
+}
+
+.recap-label {
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.recap-value {
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.recap-link {
+  color: var(--primary);
+  text-decoration: none;
+  transition: color var(--transition-base);
+  font-size: var(--font-size-sm);
+  word-break: break-all;
+}
+
+.recap-link:hover {
+  color: var(--accent);
+  text-decoration: underline;
+}
+
+.recap-bundles {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.recap-bundle {
+  padding: var(--space-md);
+  background: rgba(108, 99, 255, 0.05);
+  border: 1px solid rgba(108, 99, 255, 0.2);
+  border-radius: var(--radius-md);
+}
+
+.recap-bundle-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.recap-bundle-title {
+  font-weight: 600;
+}
+
+.recap-bundle-price {
+  color: var(--primary);
+  font-weight: 700;
+  font-size: var(--font-size-sm);
+}
+
+.recap-cta {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin: var(--space-xl) 0;
+}
+
+/* ===================================
+   BenefitChat Component
+   =================================== */
+.benefit-chat-wrapper {
+  position: fixed;
+  left: var(--space-md);
+  bottom: var(--space-md);
+  width: 350px;
+  max-height: 400px;
+  z-index: var(--z-fixed);
+}
+
+.benefit-chat {
+  background: var(--gradient-card);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  max-height: 400px;
+}
+
+.benefit-chat-header {
+  display: flex;
+  align-items: center;
+  gap: var(--space-sm);
+  padding: var(--space-md);
+  background: var(--gradient-primary);
+  color: white;
+  font-weight: 600;
+}
+
+.chat-avatar {
+  font-size: 1.5rem;
+}
+
+.chat-title {
+  font-size: var(--font-size-base);
+}
+
+.benefit-chat-messages {
+  padding: var(--space-md);
+  overflow-y: auto;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-sm);
+}
+
+.benefit-chat-messages::-webkit-scrollbar {
+  width: 6px;
+}
+
+.benefit-chat-messages::-webkit-scrollbar-track {
+  background: var(--card);
+}
+
+.benefit-chat-messages::-webkit-scrollbar-thumb {
+  background: var(--primary);
+  border-radius: var(--radius-sm);
+}
+
+.chat-message {
+  padding: var(--space-sm) var(--space-md);
+  background: rgba(108, 99, 255, 0.1);
+  border: 1px solid rgba(108, 99, 255, 0.2);
+  border-radius: var(--radius-md);
+  animation: slideInLeft 300ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.chat-message-text {
+  font-size: var(--font-size-sm);
+  line-height: 1.6;
+  color: var(--text-primary);
+}
+
+/* ===================================
+   Responsive Adjustments
+   =================================== */
+@media (max-width: 1024px) {
+  .benefit-chat-wrapper {
+    width: 320px;
+  }
+}
+
+@media (max-width: 768px) {
+  .wizard-stage {
+    padding: var(--space-md);
+  }
+
+  .sector-icon {
+    font-size: 2.5rem;
+  }
+
+  .city-region-cities {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .bundles-grid-wizard {
+    grid-template-columns: 1fr;
+  }
+
+  .benefit-chat-wrapper {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    margin: var(--space-xl) 0;
+  }
+
+  .recap-cta .btn {
+    width: 100%;
+  }
+
+  .stage-nav {
+    width: 100%;
+  }
+
+  .stage-nav .btn {
+    flex: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .stage-title {
+    font-size: var(--font-size-2xl);
+  }
+
+  .sector-option {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .city-region-cities {
+    grid-template-columns: 1fr;
+  }
+
+  .probe-boolean {
+    flex-direction: column;
+  }
+}
