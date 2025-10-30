@@ -66,13 +66,46 @@
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
 
+  <!-- Animation & UI Libraries -->
+  <!-- AOS (Animate On Scroll) -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css">
+
+  <!-- Tippy.js (Tooltips) -->
+  <link rel="stylesheet" href="https://unpkg.com/tippy.js@6/dist/tippy.css">
+
   <!-- Custom Styles -->
   <link rel="stylesheet" href="./css/styles.css">
   <link rel="stylesheet" href="./css/components.css">
   <link rel="stylesheet" href="./css/wizard.css">
+  <link rel="stylesheet" href="./src/ui/rtl.css">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎯</text></svg>">
+
+  <!-- Prefers Reduced Motion Guard -->
+  <script>
+    // Disable animations if user prefers reduced motion
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      // Disable AOS
+      window.AOS = { init: () => {}, refresh: () => {}, refreshHard: () => {} };
+
+      // Add reduced motion class to root
+      document.documentElement.classList.add('reduced-motion');
+
+      // Override CSS animations
+      const style = document.createElement('style');
+      style.textContent = `
+        .reduced-motion *,
+        .reduced-motion *::before,
+        .reduced-motion *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      `;
+      document.head.appendChild(style);
+    }
+  </script>
 </head>
 
 <body>
@@ -253,11 +286,77 @@
   </a>
 
   <!-- Scripts -->
-  <!-- jsPDF for PDF generation (optional) -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <!-- Animation Libraries -->
+  <!-- Motion One (for smooth animations) -->
+  <script src="https://cdn.jsdelivr.net/npm/motion@11.2.0/dist/motion.js" defer></script>
+
+  <!-- GSAP Core (for card hover effects) -->
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js" defer></script>
+
+  <!-- AOS (Animate On Scroll) -->
+  <script src="https://unpkg.com/aos@2.3.4/dist/aos.js" defer></script>
+
+  <!-- Lenis (Smooth Scroll) -->
+  <script src="https://cdn.jsdelivr.net/npm/@studio-freight/lenis@1.0.42/dist/lenis.min.js" defer></script>
+
+  <!-- Tippy.js (Tooltips) - Requires Popper.js -->
+  <script src="https://unpkg.com/@popperjs/core@2" defer></script>
+  <script src="https://unpkg.com/tippy.js@6/dist/tippy-bundle.umd.js" defer></script>
+
+  <!-- Lottie Web (for animated icons/checkmarks) -->
+  <script src="https://cdn.jsdelivr.net/npm/lottie-web@5.12.2/build/player/lottie.min.js" defer></script>
+
+  <!-- jsPDF for PDF generation -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+
+  <!-- Custom Modules -->
+  <script type="module" src="./src/icons/index.js"></script>
+  <script type="module" src="./src/motion/presets.js"></script>
+  <script type="module" src="./src/motion/io.js"></script>
 
   <!-- App Scripts -->
-  <script src="./js/pdf.js"></script>
-  <script src="./js/app-wizard.js"></script>
+  <script src="./js/pdf.js" defer></script>
+  <script src="./js/app-wizard.js" defer></script>
+
+  <!-- Initialize Libraries -->
+  <script defer>
+    // Wait for all libraries to load
+    window.addEventListener('DOMContentLoaded', () => {
+      // Initialize AOS (Animate On Scroll)
+      if (window.AOS && typeof window.AOS.init === 'function') {
+        window.AOS.init({
+          duration: 300,
+          easing: 'ease-out',
+          once: true,
+          mirror: false,
+          disable: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+        });
+      }
+
+      // Initialize Lenis (Smooth Scroll)
+      if (window.Lenis && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        const lenis = new Lenis({
+          duration: 1.2,
+          easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+          direction: 'vertical',
+          gestureDirection: 'vertical',
+          smooth: true,
+          smoothTouch: false
+        });
+
+        function raf(time) {
+          lenis.raf(time);
+          requestAnimationFrame(raf);
+        }
+
+        requestAnimationFrame(raf);
+
+        // Store in window for global access
+        window.lenis = lenis;
+      }
+
+      console.log('✨ All libraries initialized');
+    });
+  </script>
 </body>
 </html>

@@ -1,0 +1,393 @@
+/* ===================================
+   RTL Enforcement & Logical Properties
+   ================================== */
+
+/* ===================================
+   1. Directional Icon Flipping
+   ================================== */
+
+/* Flip directional icons in RTL */
+:root[dir="rtl"] .chevron,
+:root[dir="rtl"] .flip-on-rtl {
+  transform: scaleX(-1);
+}
+
+/* Apply to common directional elements */
+.flip-on-rtl {
+  display: inline-block; /* Needed for transform */
+}
+
+/* Arrows and chevrons */
+:root[dir="rtl"] .icon-chevron,
+:root[dir="rtl"] .icon-arrow-right,
+:root[dir="rtl"] .icon-arrow-left {
+  transform: scaleX(-1);
+}
+
+/* ===================================
+   2. Logical Properties Utilities
+   ================================== */
+
+/* Inline Flow (horizontal) */
+.flow-inline {
+  display: inline-flex;
+  gap: 0.5rem;
+}
+
+/* Spacing utilities using logical properties */
+.m-inline-auto {
+  margin-inline: auto;
+}
+
+.m-inline-start-sm {
+  margin-inline-start: var(--space-sm, 0.5rem);
+}
+
+.m-inline-end-sm {
+  margin-inline-end: var(--space-sm, 0.5rem);
+}
+
+.m-inline-start-md {
+  margin-inline-start: var(--space-md, 1rem);
+}
+
+.m-inline-end-md {
+  margin-inline-end: var(--space-md, 1rem);
+}
+
+.p-inline-md {
+  padding-inline: var(--space-md, 1rem);
+}
+
+.p-inline-lg {
+  padding-inline: var(--space-lg, 1.5rem);
+}
+
+/* Text alignment using logical values */
+.text-start {
+  text-align: start;
+}
+
+.text-end {
+  text-align: end;
+}
+
+/* ===================================
+   3. Positioning (Logical Insets)
+   ================================== */
+
+/* Inset utilities */
+.inset-inline-start-0 {
+  inset-inline-start: 0;
+}
+
+.inset-inline-end-0 {
+  inset-inline-end: 0;
+}
+
+/* Common positioning patterns */
+.position-inline-start {
+  position: absolute;
+  inset-inline-start: var(--space-md, 1rem);
+}
+
+.position-inline-end {
+  position: absolute;
+  inset-inline-end: var(--space-md, 1rem);
+}
+
+/* ===================================
+   4. RTL-Aware Flex & Grid
+   ================================== */
+
+/* Flex utilities that respect direction */
+.flex-row-rtl {
+  display: flex;
+  flex-direction: row;
+}
+
+:root[dir="rtl"] .flex-row-rtl {
+  flex-direction: row-reverse;
+}
+
+/* Grid with RTL support */
+.grid-rtl {
+  display: grid;
+  direction: inherit;
+}
+
+/* ===================================
+   5. Border Radius (Logical)
+   ================================== */
+
+/* Logical border radius */
+.rounded-start {
+  border-start-start-radius: var(--radius, 8px);
+  border-end-start-radius: var(--radius, 8px);
+}
+
+.rounded-end {
+  border-start-end-radius: var(--radius, 8px);
+  border-end-end-radius: var(--radius, 8px);
+}
+
+/* ===================================
+   6. Component-Specific RTL Fixes
+   ================================== */
+
+/* WhatsApp float button */
+.whatsapp-float {
+  position: fixed;
+  inset-inline-end: var(--space-md, 1rem);
+  bottom: var(--space-md, 1rem);
+}
+
+/* BenefitChat positioning */
+.benefit-chat {
+  position: fixed;
+  inset-inline-start: var(--space-md, 1rem);
+  bottom: var(--space-md, 1rem);
+}
+
+/* Stage progress bar */
+.stage-progress-bar {
+  direction: ltr; /* Progress bars always LTR */
+}
+
+/* Search input icons */
+.search-icon {
+  position: absolute;
+  inset-inline-start: var(--space-sm, 0.5rem);
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+:root[dir="rtl"] .search-icon.flip-on-rtl {
+  transform: translateY(-50%) scaleX(-1);
+}
+
+/* Input with icon */
+.input-with-icon-start {
+  padding-inline-start: 2.5rem;
+  padding-inline-end: var(--space-md, 1rem);
+}
+
+.input-with-icon-end {
+  padding-inline-start: var(--space-md, 1rem);
+  padding-inline-end: 2.5rem;
+}
+
+/* ===================================
+   7. Transitions (Direction-Aware)
+   ================================== */
+
+/* Slide animations */
+@keyframes slideInStart {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slideInEnd {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+:root[dir="rtl"] @keyframes slideInStart {
+  from {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+}
+
+:root[dir="rtl"] @keyframes slideInEnd {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+}
+
+/* ===================================
+   8. Accessibility & Focus
+   ================================== */
+
+/* Focus rings respect direction */
+.focus-ring {
+  outline: 2px solid var(--primary, #6C63FF);
+  outline-offset: 2px;
+}
+
+/* Keyboard navigation helpers */
+[tabindex]:focus-visible {
+  outline: 2px solid var(--primary, #6C63FF);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm, 4px);
+}
+
+/* ===================================
+   9. Typography RTL Adjustments
+   ================================== */
+
+/* Better Arabic number rendering */
+.arabic-numbers {
+  font-feature-settings: "tnum" 1; /* Tabular numbers */
+}
+
+/* Keep Latin text LTR when embedded in Arabic */
+.latin-text {
+  direction: ltr;
+  display: inline-block;
+}
+
+/* Price and currency formatting */
+.price-display {
+  direction: ltr;
+  display: inline-block;
+  unicode-bidi: embed;
+}
+
+/* ===================================
+   10. Print & Media Query Support
+   ================================== */
+
+@media print {
+  /* Ensure RTL is preserved in print */
+  * {
+    direction: inherit;
+  }
+}
+
+/* Mobile RTL adjustments */
+@media (max-width: 768px) {
+  .benefit-chat {
+    position: relative;
+    inset-inline-start: auto;
+    bottom: auto;
+    margin-inline: var(--space-md, 1rem);
+  }
+
+  .whatsapp-float {
+    inset-inline-end: var(--space-sm, 0.5rem);
+    bottom: var(--space-sm, 0.5rem);
+  }
+}
+
+/* ===================================
+   11. Scroll & Overflow
+   ================================== */
+
+/* Scrollbar on correct side */
+.scroll-container {
+  overflow-y: auto;
+  direction: inherit;
+}
+
+/* Custom scrollbar for RTL */
+:root[dir="rtl"] .scroll-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+:root[dir="rtl"] .scroll-container::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+}
+
+:root[dir="rtl"] .scroll-container::-webkit-scrollbar-thumb {
+  background: rgba(108, 99, 255, 0.3);
+  border-radius: 4px;
+}
+
+/* ===================================
+   12. Form Elements RTL
+   ================================== */
+
+/* Input fields */
+input[type="text"],
+input[type="url"],
+input[type="email"],
+textarea {
+  text-align: start;
+  direction: inherit;
+}
+
+/* Radio and checkbox alignment */
+input[type="radio"],
+input[type="checkbox"] {
+  margin-inline-end: 0.5rem;
+  margin-inline-start: 0;
+}
+
+/* Select dropdown icon */
+select {
+  padding-inline-end: 2rem;
+  padding-inline-start: 1rem;
+  background-position: left 0.5rem center;
+}
+
+:root[dir="rtl"] select {
+  background-position: right 0.5rem center;
+}
+
+/* ===================================
+   13. Animation Preferences
+   ================================== */
+
+/* Respect reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+
+  .flip-on-rtl {
+    transition: none;
+  }
+}
+
+/* ===================================
+   14. Utility Classes
+   ================================== */
+
+/* RTL debug helper (development only) */
+.rtl-debug {
+  outline: 2px dashed orange;
+  position: relative;
+}
+
+.rtl-debug::after {
+  content: "RTL";
+  position: absolute;
+  top: 0;
+  inset-inline-start: 0;
+  background: orange;
+  color: black;
+  padding: 2px 4px;
+  font-size: 10px;
+  font-weight: bold;
+}
+
+/* LTR override for specific content */
+.force-ltr {
+  direction: ltr !important;
+  text-align: left !important;
+}
+
+/* RTL override (useful for nested content) */
+.force-rtl {
+  direction: rtl !important;
+  text-align: right !important;
+}
