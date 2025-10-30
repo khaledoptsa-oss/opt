@@ -1,0 +1,445 @@
+/* ===================================
+   Design Tokens - White Friday Funnel
+   =================================== */
+:root {
+  /* Colors */
+  --bg-start: #0B1023;
+  --bg-end: #101948;
+  --primary: #6C63FF;
+  --accent: #FF7AC6;
+  --success: #21C08B;
+  --warning: #F59E0B;
+  --muted: #9AA4B2;
+  --card: #0F1530;
+  --stroke: #1F2747;
+  --text-primary: #FFFFFF;
+  --text-secondary: #9AA4B2;
+  --text-muted: #6B7280;
+
+  /* Gradients */
+  --gradient-bg: linear-gradient(135deg, var(--bg-start) 0%, var(--bg-end) 100%);
+  --gradient-primary: linear-gradient(135deg, var(--primary) 0%, #8B7EFF 100%);
+  --gradient-accent: linear-gradient(135deg, var(--accent) 0%, #FF9FD9 100%);
+  --gradient-success: linear-gradient(135deg, var(--success) 0%, #2EE5A8 100%);
+  --gradient-card: linear-gradient(145deg, rgba(15, 21, 48, 0.8) 0%, rgba(31, 39, 71, 0.4) 100%);
+
+  /* Shadows */
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 16px rgba(0, 0, 0, 0.15);
+  --shadow-lg: 0 8px 32px rgba(0, 0, 0, 0.2);
+  --shadow-xl: 0 16px 48px rgba(0, 0, 0, 0.3);
+  --shadow-neon: 0 0 20px rgba(108, 99, 255, 0.4);
+  --shadow-accent: 0 0 20px rgba(255, 122, 198, 0.4);
+
+  /* Borders */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 24px;
+  --radius-full: 9999px;
+
+  /* Spacing */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2rem;
+  --space-xl: 3rem;
+  --space-2xl: 4rem;
+
+  /* Typography */
+  --font-size-xs: clamp(0.75rem, 2vw, 0.875rem);
+  --font-size-sm: clamp(0.875rem, 2.5vw, 1rem);
+  --font-size-base: clamp(1rem, 3vw, 1.125rem);
+  --font-size-lg: clamp(1.125rem, 3.5vw, 1.25rem);
+  --font-size-xl: clamp(1.25rem, 4vw, 1.5rem);
+  --font-size-2xl: clamp(1.5rem, 5vw, 2rem);
+  --font-size-3xl: clamp(2rem, 6vw, 3rem);
+  --font-size-4xl: clamp(2.5rem, 7vw, 4rem);
+
+  /* Animation */
+  --transition-fast: 200ms cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-base: 300ms cubic-bezier(0.22, 1, 0.36, 1);
+  --transition-slow: 350ms cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* Z-index */
+  --z-base: 1;
+  --z-dropdown: 100;
+  --z-sticky: 200;
+  --z-fixed: 300;
+  --z-modal-backdrop: 400;
+  --z-modal: 500;
+  --z-toast: 600;
+  --z-tooltip: 700;
+}
+
+/* ===================================
+   Base Styles
+   =================================== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Tajawal', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--gradient-bg);
+  background-attachment: fixed;
+  color: var(--text-primary);
+  direction: rtl;
+  text-align: right;
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+}
+
+/* ===================================
+   Typography
+   =================================== */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: var(--space-md);
+}
+
+h1 { font-size: var(--font-size-4xl); }
+h2 { font-size: var(--font-size-3xl); }
+h3 { font-size: var(--font-size-2xl); }
+h4 { font-size: var(--font-size-xl); }
+h5 { font-size: var(--font-size-lg); }
+h6 { font-size: var(--font-size-base); }
+
+p {
+  margin-bottom: var(--space-sm);
+  color: var(--text-secondary);
+}
+
+.text-gradient-primary {
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-accent {
+  background: var(--gradient-accent);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ===================================
+   Container & Layout
+   =================================== */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 var(--space-md);
+}
+
+.section {
+  padding: var(--space-2xl) 0;
+}
+
+/* ===================================
+   Buttons
+   =================================== */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  padding: var(--space-sm) var(--space-lg);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  border-radius: var(--radius-lg);
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-base);
+  text-decoration: none;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.btn-primary {
+  background: var(--gradient-primary);
+  color: white;
+  box-shadow: var(--shadow-neon);
+}
+
+.btn-primary:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-neon), var(--shadow-lg);
+}
+
+.btn-accent {
+  background: var(--gradient-accent);
+  color: white;
+  box-shadow: var(--shadow-accent);
+}
+
+.btn-accent:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-accent), var(--shadow-lg);
+}
+
+.btn-outline {
+  background: transparent;
+  color: var(--primary);
+  border: 2px solid var(--primary);
+}
+
+.btn-outline:hover:not(:disabled) {
+  background: var(--primary);
+  color: white;
+}
+
+.btn-success {
+  background: var(--gradient-success);
+  color: white;
+}
+
+.btn-lg {
+  padding: var(--space-md) var(--space-xl);
+  font-size: var(--font-size-lg);
+}
+
+.btn-sm {
+  padding: var(--space-xs) var(--space-md);
+  font-size: var(--font-size-sm);
+}
+
+/* ===================================
+   Cards
+   =================================== */
+.card {
+  background: var(--gradient-card);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--stroke);
+  border-radius: var(--radius-lg);
+  padding: var(--space-lg);
+  transition: all var(--transition-base);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: var(--gradient-primary);
+  transform: scaleX(0);
+  transition: transform var(--transition-base);
+}
+
+.card:hover::before {
+  transform: scaleX(1);
+}
+
+.card:hover {
+  transform: translateY(-4px);
+  border-color: var(--primary);
+  box-shadow: var(--shadow-lg), var(--shadow-neon);
+}
+
+.card-highlight {
+  border-color: var(--primary);
+  box-shadow: var(--shadow-neon);
+}
+
+.card-highlight::before {
+  transform: scaleX(1);
+}
+
+/* ===================================
+   Badge
+   =================================== */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: var(--space-xs) var(--space-sm);
+  font-size: var(--font-size-xs);
+  font-weight: 600;
+  border-radius: var(--radius-full);
+  background: var(--gradient-accent);
+  color: white;
+}
+
+.badge-success {
+  background: var(--gradient-success);
+}
+
+.badge-warning {
+  background: linear-gradient(135deg, var(--warning) 0%, #FBBF24 100%);
+}
+
+/* ===================================
+   Animations
+   =================================== */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -1000px 0;
+  }
+  100% {
+    background-position: 1000px 0;
+  }
+}
+
+.animate-fade-in {
+  animation: fadeIn var(--transition-base) ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight var(--transition-base) ease-out;
+}
+
+.animate-slide-in-left {
+  animation: slideInLeft var(--transition-base) ease-out;
+}
+
+.animate-scale-in {
+  animation: scaleIn var(--transition-base) ease-out;
+}
+
+/* ===================================
+   Utilities
+   =================================== */
+.text-center { text-align: center; }
+.text-left { text-align: left; }
+.text-right { text-align: right; }
+
+.mt-sm { margin-top: var(--space-sm); }
+.mt-md { margin-top: var(--space-md); }
+.mt-lg { margin-top: var(--space-lg); }
+.mt-xl { margin-top: var(--space-xl); }
+
+.mb-sm { margin-bottom: var(--space-sm); }
+.mb-md { margin-bottom: var(--space-md); }
+.mb-lg { margin-bottom: var(--space-lg); }
+.mb-xl { margin-bottom: var(--space-xl); }
+
+.hidden { display: none !important; }
+.visible { display: block; }
+
+/* ===================================
+   Focus States for Accessibility
+   =================================== */
+*:focus-visible {
+  outline: 3px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+/* ===================================
+   Loading State
+   =================================== */
+.loading {
+  position: relative;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.loading::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 24px;
+  height: 24px;
+  border: 3px solid var(--muted);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* ===================================
+   Responsive
+   =================================== */
+@media (max-width: 768px) {
+  :root {
+    --space-xl: 2rem;
+    --space-2xl: 3rem;
+  }
+
+  .container {
+    padding: 0 var(--space-sm);
+  }
+
+  .section {
+    padding: var(--space-xl) 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .btn {
+    width: 100%;
+  }
+}

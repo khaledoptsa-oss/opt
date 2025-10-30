@@ -1,0 +1,442 @@
+{
+  "version": "1.0",
+  "currency": "SAR",
+  "billing_discounts": {
+    "m1": 0,
+    "m3": 0.10,
+    "m6": 0.18,
+    "y12": 0.35
+  },
+  "sectors": [
+    {
+      "id": "restaurants",
+      "label": "مطاعم",
+      "icon": "🍽️",
+      "questions": [
+        {
+          "id": "city",
+          "type": "select",
+          "label": "المدينة",
+          "options": ["المدينة المنورة", "الرياض", "جدة", "مكة"]
+        },
+        {
+          "id": "has_site",
+          "type": "boolean",
+          "label": "هل لديك موقع؟"
+        },
+        {
+          "id": "has_social",
+          "type": "boolean",
+          "label": "هل تدير السوشيال بانتظام؟"
+        }
+      ],
+      "bundles": [
+        {
+          "id": "hook",
+          "title": "منيو إلكتروني + طلبات واتساب",
+          "monthly": 1199,
+          "features": [
+            "منيو تفاعلي احترافي",
+            "QR للطاولات",
+            "زر واتساب مع قوالب جاهزة",
+            "تحديثات فورية للأسعار"
+          ],
+          "unlocks": ["web_pro", "mkt_pro", "washeej_growth"],
+          "badge": "الأكثر طلباً"
+        },
+        {
+          "id": "web_pro",
+          "title": "صفحة هبوط تحويلية",
+          "monthly": 2299,
+          "features": [
+            "Landing عالية التحويل",
+            "Analytics متقدم",
+            "نماذج حجز طاولات",
+            "معرض صور احترافي"
+          ],
+          "unlocks": ["mkt_pro"]
+        },
+        {
+          "id": "mkt_pro",
+          "title": "خطة محتوى 12 منشور + 2 ريلز",
+          "monthly": 3499,
+          "features": [
+            "تصاميم محترفة مخصصة",
+            "هاشتاقات مدروسة",
+            "تقارير أداء شهرية",
+            "كتابة محتوى إبداعي"
+          ],
+          "unlocks": ["washeej_growth"]
+        },
+        {
+          "id": "washeej_growth",
+          "title": "وشيج Growth",
+          "monthly": 499,
+          "features": [
+            "ردود ذكية تلقائية",
+            "حملات تسويقية",
+            "تحليل المحادثات",
+            "قوالب رسائل"
+          ],
+          "addon": true,
+          "badge": "جديد"
+        }
+      ]
+    },
+    {
+      "id": "clinics",
+      "label": "عيادات",
+      "icon": "🏥",
+      "questions": [
+        {
+          "id": "city",
+          "type": "select",
+          "label": "المدينة",
+          "options": ["المدينة المنورة", "الرياض", "جدة", "مكة"]
+        },
+        {
+          "id": "has_site",
+          "type": "boolean",
+          "label": "هل لديك موقع؟"
+        },
+        {
+          "id": "has_social",
+          "type": "boolean",
+          "label": "هل تدير السوشيال بانتظام؟"
+        }
+      ],
+      "bundles": [
+        {
+          "id": "hook",
+          "title": "حجز مواعيد + تذكير واتساب",
+          "monthly": 1499,
+          "features": [
+            "نظام حجوزات ذكي",
+            "تذكير تلقائي للمرضى",
+            "إدارة قوائم الانتظار",
+            "تأكيدات فورية"
+          ],
+          "unlocks": ["web_pro", "mkt_pro", "washeej_growth"],
+          "badge": "الأكثر طلباً"
+        },
+        {
+          "id": "web_pro",
+          "title": "موقع تعريفي 5 صفحات",
+          "monthly": 2799,
+          "features": [
+            "صفحات الأطباء والتخصصات",
+            "خريطة تفاعلية",
+            "معرض قبل وبعد",
+            "نماذج استشارة"
+          ],
+          "unlocks": ["mkt_pro"]
+        },
+        {
+          "id": "mkt_pro",
+          "title": "12 منشور + 2 ريلز",
+          "monthly": 3299,
+          "features": [
+            "هوية بصرية طبية",
+            "حملات توعوية",
+            "محتوى علمي موثوق",
+            "تقارير وصول"
+          ],
+          "unlocks": ["washeej_growth"]
+        },
+        {
+          "id": "washeej_growth",
+          "title": "وشيج Growth",
+          "monthly": 499,
+          "features": [
+            "تذكير مواعيد ذكي",
+            "قوالب متابعة المرضى",
+            "استبيانات رضا",
+            "إحصائيات محادثات"
+          ],
+          "addon": true,
+          "badge": "جديد"
+        }
+      ]
+    },
+    {
+      "id": "recruitment",
+      "label": "مكاتب الاستقدام",
+      "icon": "👥",
+      "questions": [
+        {
+          "id": "city",
+          "type": "select",
+          "label": "المدينة",
+          "options": ["المدينة المنورة", "الرياض", "جدة", "مكة"]
+        },
+        {
+          "id": "has_site",
+          "type": "boolean",
+          "label": "هل لديك موقع؟"
+        }
+      ],
+      "bundles": [
+        {
+          "id": "hook",
+          "title": "صفحة هبوط لإعلانات جوجل",
+          "monthly": 1399,
+          "features": [
+            "فورم طلب احترافي",
+            "تتبع Google Ads",
+            "صفحة سريعة التحميل",
+            "تحسين معدل التحويل"
+          ],
+          "unlocks": ["cv_site", "crm", "washeej_growth"],
+          "badge": "الأكثر طلباً"
+        },
+        {
+          "id": "cv_site",
+          "title": "موقع عروض سير ذاتية",
+          "monthly": 3500,
+          "features": [
+            "فلترة متقدمة",
+            "وسوم ومهارات",
+            "بحث ذكي",
+            "لوحة تحكم"
+          ],
+          "unlocks": ["crm"]
+        },
+        {
+          "id": "crm",
+          "title": "لوحة طلبات + أرشفة",
+          "monthly": 2400,
+          "features": [
+            "مراحل سير العمل",
+            "مرفقات ووثائق",
+            "تنبيهات",
+            "تقارير"
+          ],
+          "unlocks": ["washeej_growth"]
+        },
+        {
+          "id": "washeej_growth",
+          "title": "وشيج Growth",
+          "monthly": 499,
+          "features": [
+            "قوالب طلب الخدمة",
+            "تنبيهات عملاء جدد",
+            "ردود سريعة",
+            "أرشفة محادثات"
+          ],
+          "addon": true,
+          "badge": "جديد"
+        }
+      ]
+    },
+    {
+      "id": "realestate",
+      "label": "عقارات",
+      "icon": "🏢",
+      "questions": [
+        {
+          "id": "city",
+          "type": "select",
+          "label": "المدينة",
+          "options": ["المدينة المنورة", "الرياض", "جدة", "مكة"]
+        },
+        {
+          "id": "has_site",
+          "type": "boolean",
+          "label": "هل لديك موقع؟"
+        }
+      ],
+      "bundles": [
+        {
+          "id": "hook",
+          "title": "صفحة عقار واحد + واتساب",
+          "monthly": 1199,
+          "features": [
+            "معرض صور احترافي",
+            "مخطط تفاعلي",
+            "زر واتساب مباشر",
+            "موقع على الخريطة"
+          ],
+          "unlocks": ["catalog", "leads", "washeej_growth"],
+          "badge": "الأكثر طلباً"
+        },
+        {
+          "id": "catalog",
+          "title": "كتالوج عقارات + بحث",
+          "monthly": 3200,
+          "features": [
+            "بحث متقدم",
+            "خرائط تفاعلية",
+            "فلاتر ذكية",
+            "مقارنة عقارات"
+          ],
+          "unlocks": ["leads"]
+        },
+        {
+          "id": "leads",
+          "title": "تكامل Leads + حملات",
+          "monthly": 2100,
+          "features": [
+            "Google Ads",
+            "SEO محلي",
+            "تتبع الزوار",
+            "تقارير أداء"
+          ],
+          "unlocks": ["washeej_growth"]
+        },
+        {
+          "id": "washeej_growth",
+          "title": "وشيج Growth",
+          "monthly": 499,
+          "features": [
+            "استجابات فورية",
+            "تذكير عملاء مهتمين",
+            "قوالب عروض",
+            "متابعة تلقائية"
+          ],
+          "addon": true,
+          "badge": "جديد"
+        }
+      ]
+    },
+    {
+      "id": "contracting",
+      "label": "مقاولات",
+      "icon": "🏗️",
+      "questions": [
+        {
+          "id": "city",
+          "type": "select",
+          "label": "المدينة",
+          "options": ["المدينة المنورة", "الرياض", "جدة", "مكة"]
+        },
+        {
+          "id": "has_site",
+          "type": "boolean",
+          "label": "هل لديك موقع؟"
+        }
+      ],
+      "bundles": [
+        {
+          "id": "hook",
+          "title": "بروفايل PDF + صفحة مشاريع",
+          "monthly": 1199,
+          "features": [
+            "قالب PDF احترافي",
+            "عرض 3 مشاريع",
+            "تحميل مباشر",
+            "شعار وهوية"
+          ],
+          "unlocks": ["projects", "offers", "washeej_growth"],
+          "badge": "الأكثر طلباً"
+        },
+        {
+          "id": "projects",
+          "title": "موقع مشاريع بتصنيفات",
+          "monthly": 2900,
+          "features": [
+            "فلترة حسب النوع",
+            "معرض صور",
+            "نماذج تواصل",
+            "شهادات عملاء"
+          ],
+          "unlocks": ["offers"]
+        },
+        {
+          "id": "offers",
+          "title": "توليد عروض سعرية PDF",
+          "monthly": 1800,
+          "features": [
+            "قوالب جاهزة",
+            "أرشفة تلقائية",
+            "توقيع إلكتروني",
+            "إرسال مباشر"
+          ],
+          "unlocks": ["washeej_growth"]
+        },
+        {
+          "id": "washeej_growth",
+          "title": "وشيج Growth",
+          "monthly": 499,
+          "features": [
+            "متابعة عملاء محتملين",
+            "حملات تسويقية",
+            "قوالب عروض",
+            "تنبيهات ذكية"
+          ],
+          "addon": true,
+          "badge": "جديد"
+        }
+      ]
+    },
+    {
+      "id": "ecommerce",
+      "label": "متاجر إلكترونية",
+      "icon": "🛒",
+      "questions": [
+        {
+          "id": "city",
+          "type": "select",
+          "label": "المدينة",
+          "options": ["المدينة المنورة", "الرياض", "جدة", "مكة"]
+        },
+        {
+          "id": "has_site",
+          "type": "boolean",
+          "label": "هل لديك موقع؟"
+        }
+      ],
+      "bundles": [
+        {
+          "id": "hook",
+          "title": "Landing + دفع + 10 منتجات",
+          "monthly": 1999,
+          "features": [
+            "دفع محلي آمن",
+            "شحن متكامل",
+            "إدارة 10 منتجات",
+            "سلة مشتريات"
+          ],
+          "unlocks": ["shop50", "erp", "washeej_growth"],
+          "badge": "الأكثر طلباً"
+        },
+        {
+          "id": "shop50",
+          "title": "متجر 50 منتج",
+          "monthly": 4500,
+          "features": [
+            "كوبونات وعروض",
+            "تقارير مبيعات",
+            "إدارة مخزون",
+            "تصنيفات متعددة"
+          ],
+          "unlocks": ["erp"]
+        },
+        {
+          "id": "erp",
+          "title": "تكامل محاسبي + CRM",
+          "monthly": 4000,
+          "features": [
+            "Webhooks",
+            "تنبيهات فورية",
+            "تقارير شاملة",
+            "API متقدم"
+          ],
+          "unlocks": ["washeej_growth"]
+        },
+        {
+          "id": "washeej_growth",
+          "title": "وشيج Growth",
+          "monthly": 699,
+          "features": [
+            "سلال متروكة",
+            "تنبيهات طلبات",
+            "دعم عملاء ذكي",
+            "حملات إعادة استهداف"
+          ],
+          "addon": true,
+          "badge": "جديد"
+        }
+      ]
+    }
+  ]
+}
